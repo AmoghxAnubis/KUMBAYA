@@ -5,6 +5,16 @@
   { id: "blonde", number: "04", year: "2016 · ALBUM", title: "Blonde", accent: "", description: "Fragments of memory, love, and change. An open-ended record that leaves room for the listener.", tracks: ["Nikes", "Ivy", "Self Control", "Nights", "White Ferrari"], className: "blonde" },
 ];
 
+function ChapterArt({ type, number }: { type: string; number: string }) {
+  return <div className={`chapter-art art-${type}`} aria-hidden="true">
+    <span className="art-number">{number}</span>
+    {type === "nostalgia" && <div className="cassette"><div className="cassette-label"><span>MEMORIES / SIDE A</span><div className="cassette-window"><i /><i /></div><span>PLAY IT BACK</span></div><div className="cassette-base" /></div>}
+    {type === "channel" && <div className="channel-frame"><div className="channel-screen"><i /><i /><i /><i /><i /><i /><i /></div><span>COLOR / SOUND / STORY</span></div>}
+    {type === "endless" && <div className="stairs">{Array.from({ length: 9 }, (_, i) => <i key={i} />)}</div>}
+    {type === "blonde" && <div className="blonde-orbit"><i /><i /><i /><span>IN<br />TIME</span></div>}
+  </div>;
+}
+
 export default function Home() {
   return <>
     <section id="home" className="hero chapter" data-scene="0" aria-labelledby="hero-title">
@@ -20,9 +30,11 @@ export default function Home() {
         <div className="chapter-meta"><span>{chapter.year}</span><span>CHAPTER {chapter.number} / 04</span></div>
         <div className="chapter-main"><div className="chapter-heading"><p className="eyebrow">The story so far</p><h2 id={`${chapter.id}-title`}>{chapter.title}{chapter.accent && <><br /><em>{chapter.accent}</em></>}</h2></div>
           <div className="chapter-copy"><p>{chapter.description}</p><div className="track-label">Selected tracks</div><ul>{chapter.tracks.map(track => <li key={track}>{track}</li>)}</ul></div></div>
+        <div className="chapter-next"><span>{chapter.number} / 04</span><a href={index < chapters.length - 1 ? `#${chapters[index + 1].id}` : "#credits"} className="text-link">{index < chapters.length - 1 ? "Next chapter" : "End of the story"} <span aria-hidden="true">↓</span></a></div>
       </div>
-      <div className="chapter-art" aria-hidden="true"><span>{chapter.number}</span><div className="art-disc" /></div>
+      <ChapterArt type={chapter.className} number={chapter.number} />
     </section>)}
     <footer id="credits" className="footer chapter" data-scene="0"><p className="eyebrow">Made for the music</p><h2>Until next time<span>.</span></h2><div className="footer-bottom"><p>An independent fan tribute to Frank Ocean.</p><a href="#home" className="text-link">Experience again ↑</a></div></footer>
   </>;
 }
+
