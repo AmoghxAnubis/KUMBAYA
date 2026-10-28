@@ -1,43 +1,23 @@
-"use client";
+﻿"use client";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import * as THREE from "three";
+import { useStore } from "@/store/useStore";
 
-import { Canvas } from '@react-three/fiber'
-import { PerformanceMonitor } from '@react-three/drei'
-import { Suspense, useState } from 'react'
-import HeroFigure from './HeroFigure'
-import AssetLoader from './AssetLoader'
-import CameraController from './CameraController'
-import PostProcessing from './PostProcessing'
-import FloatingParticles from './FloatingParticles'
-import ClothBanner from './ClothBanner'
-
+function Orb() {
+  const mesh = useRef<THREE.Mesh>(null);
+  const color = useRef(new THREE.Color());
+  useFrame((state, delta) => {
+    if (!mesh.current) return;
+    const index = useStore.getState().activeProjectIndex;
+    mesh.current.rotation.y += delta * 0.08;
+    mesh.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.15;
+    const material = mesh.current.material as THREE.MeshBasicMaterial;
+    color.current.set(["#b7ff86", "#ff964e", "#ffcb63", "#dddddd", "#a6e9a9"][index] ?? "#b7ff86");
+    material.color.lerp(color.current, Math.min(delta * 1.5, 1));
+  });
+  return <mesh ref={mesh} position={[2.4, 0, -1]}><icosahedronGeometry args={[2.3, 2]} /><meshBasicMaterial color="#b7ff86" wireframe transparent opacity={0.25} /></mesh>;
+}
 export default function SceneWrapper() {
-    const [dpr, setDpr] = useState(1.5)
-
-    return (
-        <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
-            <Canvas
-                dpr={dpr}
-                camera={{ position: [0, 0, 5], fov: 45 }}
-                gl={{ antialias: false }} // Performance optimization, rely on post-processing or dpr
-            >
-                <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
-
-                <AssetLoader />
-
-                <Suspense fallback={null}>
-                    <color attach="background" args={['#000000']} />
-                    <fog attach="fog" args={['#000000', 8, 20]} />
-
-                    <ambientLight intensity={0.3} />
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.5} color="#4ade80" />
-                    <pointLight position={[-10, -10, -10]} intensity={0.3} color="#f97316" />
-
-                    <HeroFigure />
-                    <FloatingParticles count={200} />
-                    <CameraController />
-                    <PostProcessing />
-                </Suspense>
-            </Canvas>
-        </div>
-    )
+  return <div className="scene" aria-hidden="true"><Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 7], fov: 45 }}><Orb /></Canvas></div>;
 }

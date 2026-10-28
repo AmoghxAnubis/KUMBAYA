@@ -1,54 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
-body {
-  color: var(--foreground);
-  background: radial-gradient(ellipse at top, #0f0f0f, #000000);
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3 {
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-@layer utilities {
-  .text-stroke {
-    -webkit-text-stroke: 1px white;
-    color: transparent;
-  }
-}
-
-/* ... existing Lenis styles ... */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import "tailwindcss";
+:root { color-scheme: dark; --ink: #f5f2e9; --muted: #a8aaa2; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #101310; color: var(--ink); font-family: 'DM Sans', sans-serif; }
+a { color: inherit; }
+::selection { background: #c8ed9b; color: #101310; }
+.scene { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .75; }
+main { position: relative; z-index: 1; }
+.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; padding: 1rem; background: #fff; color: #111; transform: translateY(-200%); }
+.skip-link:focus { transform: none; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.navigation { position: fixed; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; gap: 2.5rem; padding: 2rem 5vw; color: #fff; mix-blend-mode: difference; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
+.navigation a { text-decoration: none; opacity: .72; transition: opacity .2s; }
+.navigation a:first-child { margin-right: auto; font-size: .85rem; letter-spacing: .08em; opacity: 1; }
+.navigation a:hover, .navigation a:focus-visible { opacity: 1; }
+.chapter { position: relative; min-height: 100svh; overflow: hidden; }
+.hero { display: flex; flex-direction: column; justify-content: center; padding: 8rem 5vw 5rem; background: linear-gradient(90deg, rgba(16,19,16,.95) 0%, rgba(16,19,16,.65) 55%, rgba(16,19,16,.25) 100%); }
+.hero-inner { width: 100%; }
+.eyebrow, .chapter-meta, .track-label, .hero-index { font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.eyebrow { color: #b4c69f; }
+h1, h2 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.075em; }
+h1 { margin: 2rem 0; font-size: clamp(5rem, 18vw, 19rem); line-height: .75; font-weight: 700; }
+h1 span { color: #c8ed9b; }
+h1 .hero-dot { color: #ff9564; }
+.hero-bottom, .footer-bottom { display: flex; justify-content: space-between; align-items: end; gap: 2rem; border-top: 1px solid #ffffff40; padding-top: 1.5rem; }
+.hero-bottom p { max-width: 20rem; font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.5; color: #d0d6c9; }
+.text-link { text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: .5rem; font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; }
+.hero-index { position: absolute; bottom: 2rem; left: 5vw; color: #9eaa98; }
+.album { display: flex; align-items: stretch; padding: 7rem 5vw 4rem; background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 48%, var(--fade) 100%); }
+.nostalgia { --bg: #a74625; --fade: #a74625b8; }
+.channel { --bg: #c47725; --fade: #c47725ae; }
+.endless { --bg: #242824; --fade: #242824b8; }
+.blonde { --bg: #365b43; --fade: #365b43ae; }
+.chapter-content { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; }
+.chapter-meta { display: flex; justify-content: space-between; padding-bottom: 1.5rem; border-bottom: 1px solid #ffffff60; }
+.chapter-main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
+.chapter-heading .eyebrow { color: #ffffffa8; }
+.chapter-heading h2 { margin: 1rem 0 3rem; font-size: clamp(5rem, 12vw, 12rem); line-height: .88; }
+.chapter-heading h2 em { font-style: italic; font-weight: 400; }
+.chapter-copy { max-width: 34rem; }
+.chapter-copy > p { font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1.45; margin: 0 0 3rem; }
+.track-label { opacity: .65; margin-bottom: 1rem; }
+.chapter-copy ul { list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; padding: 0; margin: 0; }
+.chapter-copy li { border: 1px solid #ffffff70; border-radius: 99px; padding: .55rem .8rem; font-size: .75rem; }
+.chapter-art { position: absolute; right: -3vw; top: 50%; transform: translateY(-50%); width: 45vw; height: 45vw; max-width: 700px; max-height: 700px; opacity: .35; pointer-events: none; }
+.chapter-art > span { position: absolute; right: 15%; top: 10%; font: 700 clamp(8rem, 23vw, 24rem)/1 'Space Grotesk', sans-serif; letter-spacing: -.1em; color: #ffffff35; }
+.art-disc { width: 100%; height: 100%; border: 1px solid #ffffff80; border-radius: 50%; box-shadow: inset 0 0 0 3vw #ffffff0b, inset 0 0 0 3.1vw #ffffff38, inset 0 0 0 8vw #ffffff0b, inset 0 0 0 8.1vw #ffffff38; }
+.footer { min-height: 70svh; padding: 8rem 5vw 3rem; display: flex; flex-direction: column; justify-content: space-between; background: #101310e8; }
+.footer h2 { font-size: clamp(4rem, 11vw, 11rem); line-height: .9; margin: 2rem 0; }
+.footer h2 span { color: #c8ed9b; }
+.footer-bottom p { color: #a8aaa2; }
+@media (max-width: 700px) { .navigation { padding: 1.5rem 5vw; gap: 1.3rem; font-size: .6rem; } .hero { padding-bottom: 7rem; } h1 { font-size: 17vw; } .hero-bottom, .footer-bottom { align-items: start; flex-direction: column; } .hero-index { font-size: .55rem; } .album { min-height: 100svh; padding-top: 6rem; } .chapter-meta { font-size: .55rem; gap: 1rem; } .chapter-main { padding: 4rem 0; } .chapter-heading h2 { font-size: clamp(4.2rem, 16vw, 7rem); } .chapter-art { width: 80vw; height: 80vw; right: -35vw; opacity: .22; } .chapter-copy { max-width: 90%; } .footer { min-height: 60svh; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
