@@ -1,4 +1,6 @@
-﻿import ListeningArchive from "@/components/dom/ListeningArchive";
+﻿import HomerRadio from "@/components/dom/HomerRadio";
+import Performances from "@/components/dom/Performances";
+import ListeningArchive from "@/components/dom/ListeningArchive";
 import ChapterIndex from "@/components/dom/ChapterIndex";
 
 const chapters = [
@@ -39,10 +41,13 @@ export default function Home() {
       <ChapterArt type={chapter.className} number={chapter.number} />
     </section>)}
     <section className="listening-interlude" aria-labelledby="interlude-title"><div><p className="eyebrow">For the long way home</p><h2 id="interlude-title">Some songs<br /><em>stay with you.</em></h2><a className="text-link" href="#archive">Find your next listen ↘</a></div></section>
+    <HomerRadio />
+    <Performances />
     <ListeningArchive />
     <footer id="credits" className="footer chapter" data-scene="0"><p className="eyebrow">Made for the music</p><h2>Until next time<span>.</span></h2><div className="footer-bottom"><p>An independent fan tribute to Frank Ocean.</p><a href="#home" className="text-link">Experience again ↑</a></div></footer>
   </>;
 }
+
 
 
 
