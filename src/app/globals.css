@@ -77,3 +77,23 @@ h1 .hero-dot { color: #ff9564; }
 .chapter-nav i { display: block; width: .6rem; height: 1px; background: currentColor; transition: width .2s; }
 .chapter-nav a[aria-current] { opacity: 1; }.chapter-nav a[aria-current] i { width: 1.2rem; }
 @media (max-width: 700px) { .chapter-art { width: 80vw; height: 80vw; right: -30vw; opacity: .35; } .chapter-nav { display: none; } .chapter-next { margin-top: 2rem; } .chapter-copy { max-width: 100%; } }
+
+/* A listening index inspired by the breadth of the official blonded archive. */
+.archive { min-height: auto; padding: 8rem 5vw 6rem; background: #e9e5d8; color: #1b211b; }
+.archive-header, .archive-label { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1.2rem; border-bottom: 1px solid #1b211b66; font-size: .65rem; font-weight: 700; letter-spacing: .14em; }
+.archive-intro { display: grid; grid-template-columns: 1fr minmax(16rem, 28rem); gap: 3rem; align-items: end; padding: 6rem 0; }
+.archive-intro .eyebrow { color: #647560; }
+.archive-intro h2 { font-size: clamp(4.5rem, 11vw, 11rem); line-height: .83; margin: 1rem 0 0; }
+.archive-intro h2 em { font-weight: 400; }
+.archive-intro > p { font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.5; max-width: 26rem; }
+.archive-content { display: grid; grid-template-columns: 1fr 1fr; gap: 7vw; }
+.archive-tracks ol { margin: 0; padding: 0; list-style: none; }
+.archive-tracks li { display: grid; grid-template-columns: 3rem 1fr auto; align-items: baseline; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #1b211b30; font: 500 clamp(1.2rem, 2vw, 1.8rem) 'Space Grotesk', sans-serif; letter-spacing: -.04em; }
+.archive-track-number, .archive-track-mark { font: 700 .65rem 'DM Sans', sans-serif; letter-spacing: .08em; color: #667263; }
+.archive-track-mark { font-size: 1rem; }
+.archive-tracks > p, .archive-player > p { color: #536052; font-size: .85rem; line-height: 1.5; }
+.archive-player h3 { font: 700 clamp(3rem, 6vw, 6rem)/.85 'Space Grotesk', sans-serif; letter-spacing: -.07em; margin: 2.5rem 0 1.5rem; }
+.archive-player h3 span { color: #7c9a6a; }
+.archive-player iframe { display: block; border: 0; border-radius: 12px; margin: 2rem 0; }
+.archive-player .text-link { display: inline-block; }
+@media (max-width: 700px) { .navigation { gap: .85rem; letter-spacing: .08em; } .archive { padding: 6rem 5vw 4rem; } .archive-header, .archive-label { font-size: .55rem; } .archive-intro { grid-template-columns: 1fr; gap: 1rem; padding: 4rem 0; } .archive-intro h2 { font-size: clamp(4.5rem, 17vw, 7rem); } .archive-content { grid-template-columns: 1fr; gap: 4rem; } }
