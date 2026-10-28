@@ -1,4 +1,5 @@
 ﻿import ListeningArchive from "@/components/dom/ListeningArchive";
+import ChapterIndex from "@/components/dom/ChapterIndex";
 
 const chapters = [
   { id: "nostalgia", number: "01", year: "2011 · MIXTAPE", title: "Nostalgia,", accent: "Ultra", description: "An orange cassette, a BMW, and a collection of stories about longing, escape, and growing up.", tracks: ["Novacane", "Swim Good", "Nature Feels", "Songs for Women"], className: "nostalgia" },
@@ -27,18 +28,22 @@ export default function Home() {
       </div>
       <span className="hero-index" aria-hidden="true">SCROLL TO BEGIN / 01—04</span>
     </section>
+    <ChapterIndex />
     {chapters.map((chapter, index) => <section key={chapter.id} id={chapter.id} data-scene={index + 1} className={`chapter album ${chapter.className}`} aria-labelledby={`${chapter.id}-title`}>
       <div className="chapter-content">
         <div className="chapter-meta"><span>{chapter.year}</span><span>CHAPTER {chapter.number} / 04</span></div>
         <div className="chapter-main"><div className="chapter-heading"><p className="eyebrow">The story so far</p><h2 id={`${chapter.id}-title`}>{chapter.title}{chapter.accent && <><br /><em>{chapter.accent}</em></>}</h2></div>
-          <div className="chapter-copy"><p>{chapter.description}</p><div className="track-label">Selected tracks</div><ul>{chapter.tracks.map(track => <li key={track}>{track}</li>)}</ul></div></div>
+          <div className="chapter-copy"><p>{chapter.description}</p><div className="track-label">Selected tracks</div><ul>{chapter.tracks.map(track => <li key={track}><a href={`https://open.spotify.com/search/${encodeURIComponent(`Frank Ocean ${track}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Search Spotify for ${track} by Frank Ocean`}>{track} <span aria-hidden="true">↗</span></a></li>)}</ul></div></div>
         <div className="chapter-next"><span>{chapter.number} / 04</span><a href={index < chapters.length - 1 ? `#${chapters[index + 1].id}` : "#archive"} className="text-link">{index < chapters.length - 1 ? "Next chapter" : "Explore the archive"} <span aria-hidden="true">↓</span></a></div>
       </div>
       <ChapterArt type={chapter.className} number={chapter.number} />
     </section>)}
+    <section className="listening-interlude" aria-labelledby="interlude-title"><div><p className="eyebrow">For the long way home</p><h2 id="interlude-title">Some songs<br /><em>stay with you.</em></h2><a className="text-link" href="#archive">Find your next listen ↘</a></div></section>
     <ListeningArchive />
     <footer id="credits" className="footer chapter" data-scene="0"><p className="eyebrow">Made for the music</p><h2>Until next time<span>.</span></h2><div className="footer-bottom"><p>An independent fan tribute to Frank Ocean.</p><a href="#home" className="text-link">Experience again ↑</a></div></footer>
   </>;
 }
+
+
 
 
