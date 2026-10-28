@@ -23,12 +23,16 @@ function ChapterArt({ type, number }: { type: string; number: string }) {
 export default function Home() {
   return <>
     <section id="home" className="hero chapter" data-scene="0" aria-labelledby="hero-title">
-      <div className="hero-inner">
-        <p className="eyebrow">An independent tribute · 2011—2016</p>
-        <h1 id="hero-title">KUM<span>BA</span>YA<span className="hero-dot">.</span></h1>
-        <div className="hero-bottom"><p>Four chapters. One journey through Frank Ocean&apos;s sound.</p><a href="#nostalgia" className="text-link">Explore the story <span aria-hidden="true">↘</span></a></div>
+      <div className="hero-image" aria-hidden="true" />
+      <div className="hero-frame">
+        <div className="hero-kicker"><span>AN INDEPENDENT TRIBUTE</span><span>FOR THE LISTENERS / 01—04</span></div>
+        <div className="hero-content">
+          <p className="hero-overline"><span /> A journey through the world of Frank Ocean</p>
+          <h1 id="hero-title">KUMBAYA<span>.</span></h1>
+          <div className="hero-description"><p>Music for the moments<br /><em>that stay with us.</em></p><a href="#chapter-index" className="hero-enter"><span className="hero-enter-icon" aria-hidden="true">↘</span><span>Enter the story<small>Four chapters & beyond</small></span></a></div>
+        </div>
+        <div className="hero-caption"><span>2011 — 2016 & BEYOND</span><span>SCROLL TO EXPLORE ↓</span></div>
       </div>
-      <span className="hero-index" aria-hidden="true">SCROLL TO BEGIN / 01—04</span>
     </section>
     <ChapterIndex />
     {chapters.map((chapter, index) => <section key={chapter.id} id={chapter.id} data-scene={index + 1} className={`chapter album ${chapter.className}`} aria-labelledby={`${chapter.id}-title`}>
@@ -47,6 +51,7 @@ export default function Home() {
     <footer id="credits" className="footer chapter" data-scene="0"><p className="eyebrow">Made for the music</p><h2>Until next time<span>.</span></h2><div className="footer-bottom"><p>An independent fan tribute to Frank Ocean.</p><a href="#home" className="text-link">Experience again ↑</a></div></footer>
   </>;
 }
+
 
 
 
