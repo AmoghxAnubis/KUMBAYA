@@ -1,6 +1,7 @@
 ﻿"use client";
 import { ReactNode, useEffect, useState } from "react";
 import SceneWrapper from "@/components/canvas/SceneWrapper";
+import SceneFallback from "@/components/canvas/SceneFallback";
 import Navigation from "@/components/dom/Navigation";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import { useStore } from "@/store/useStore";
@@ -22,5 +23,6 @@ export default function Experience({ children }: { children: ReactNode }) {
     sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, [setActiveProjectIndex]);
-  return <><a className="skip-link" href="#nostalgia">Skip to chapters</a>{!reduced && <SceneWrapper />}<Navigation /><SmoothScroll disabled={reduced}><main>{children}</main></SmoothScroll></>;
+  return <><a className="skip-link" href="#nostalgia">Skip to chapters</a>{!reduced && <SceneFallback><SceneWrapper /></SceneFallback>}<Navigation /><SmoothScroll disabled={reduced}><main>{children}</main></SmoothScroll></>;
 }
+
