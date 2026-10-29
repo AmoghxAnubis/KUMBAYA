@@ -6,6 +6,7 @@ import { Fragment, MemoryBox } from "@/components/dom/MemoryBox";
 import Workshop from "@/components/dom/Workshop";
 import { PassengerSeat, ChannelSwitcher, MemoryCards, Threads } from "@/components/dom/ChapterInteractions";
 import SignalDial from "@/components/dom/SignalDial";
+import Image from "next/image";
 
 const chapters = [
   { id: "nostalgia", number: "01", year: "2011 · MIXTAPE", title: "Nostalgia,", accent: "Ultra", description: "An orange cassette, a BMW, and a collection of stories about longing, escape, and growing up.", tracks: ["Novacane", "Swim Good", "Nature Feels", "Songs for Women"], className: "nostalgia" },
@@ -13,6 +14,13 @@ const chapters = [
   { id: "endless", number: "03", year: "2016 · VISUAL ALBUM", title: "Endless", accent: "", description: "A staircase slowly takes shape. An intimate portrait of making, repetition, and the beauty of unfinished things.", tracks: ["At Your Best", "Alabama", "Wither", "Higgs"], className: "endless" },
   { id: "blonde", number: "04", year: "2016 · ALBUM", title: "Blonde", accent: "", description: "Fragments of memory, love, and change. An open-ended record that leaves room for the listener.", tracks: ["Nikes", "Ivy", "Self Control", "Nights", "White Ferrari"], className: "blonde" },
 ];
+
+const chapterImages: Record<string, { src: string; alt: string; caption: string; detail: string }> = {
+  nostalgia: { src: "/archive-road.webp", alt: "Close-up of an orange vintage car in warm sunlight", caption: "THE LONG WAY HOME", detail: "A study in escape and return." },
+  "channel-orange": { src: "/archive-broadcast.webp", alt: "A glowing vintage television in an amber-lit room", caption: "ROOMS IN COLOR", detail: "A study in characters and contrasts." },
+  endless: { src: "/archive-workshop.webp", alt: "An unfinished wooden staircase in a sunlit workshop", caption: "THE WORK IN PROGRESS", detail: "A study in making and becoming." },
+  blonde: { src: "/archive-summer.webp", alt: "A red racing helmet and pink fabric beside the ocean", caption: "A SUMMER OUT OF TIME", detail: "A study in distance and memory." },
+};
 
 function ChapterArt({ type, number }: { type: string; number: string }) {
   return <div className={`chapter-art art-${type}`} aria-hidden="true">
@@ -47,6 +55,7 @@ export default function Home() {
         <div className="chapter-meta"><span>{chapter.year}</span><span>CHAPTER {chapter.number} / 04</span></div>
         <div className="chapter-main"><div className="chapter-heading"><p className="eyebrow">The story so far</p><h2 id={`${chapter.id}-title`}>{chapter.title}{chapter.accent && <><br /><em>{chapter.accent}</em></>}</h2></div>
           <div className="chapter-copy"><p>{chapter.description}</p><div className="track-label">Selected tracks</div><ul>{chapter.tracks.map(track => <li key={track}><a href={`https://open.spotify.com/search/${encodeURIComponent(`Frank Ocean ${track}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Search Spotify for ${track} by Frank Ocean`}>{track} <span aria-hidden="true">↗</span></a></li>)}</ul></div></div>
+        <figure className={`chapter-photo chapter-photo-${chapter.className}`}><div className="chapter-photo-frame"><Image src={chapterImages[chapter.id].src} alt={chapterImages[chapter.id].alt} width={1200} height={1200} sizes="(max-width: 700px) 92vw, 62vw" /><span className="photo-index" aria-hidden="true">{chapter.number} / 04</span><span className="photo-mark" aria-hidden="true">✳</span></div><figcaption><span>{chapterImages[chapter.id].caption}<small>ORIGINAL KUMBAYA VISUAL STUDY</small></span><span>{chapterImages[chapter.id].detail}</span></figcaption></figure>
         {chapter.id === "nostalgia" && <PassengerSeat />}{chapter.id === "channel-orange" && <ChannelSwitcher />}{chapter.id === "endless" && <Workshop />}{chapter.id === "blonde" && <MemoryCards />}
         <div className="fragment-grid">{({ nostalgia: ["passenger", "road", "mixtape"], "channel-orange": ["room", "summer", "window"], endless: ["staircase", "workshop", "pause"], blonde: ["green", "distance", "time"] }[chapter.id] || []).map(id => <Fragment key={id} id={id} />)}</div>
         <div className="chapter-next"><span>{chapter.number} / 04</span><a href={index < chapters.length - 1 ? `#${chapters[index + 1].id}` : "#archive"} className="text-link">{index < chapters.length - 1 ? "Next chapter" : "Explore the archive"} <span aria-hidden="true">↓</span></a></div>
