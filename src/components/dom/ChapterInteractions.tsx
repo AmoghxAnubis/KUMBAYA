@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 const context = "https://www.newyorker.com/magazine/2016/09/05/frank-oceans-blonde-endless-and-boys-dont-cry-reviewed";
@@ -14,7 +14,7 @@ const channels = [
 ];
 export function ChannelSwitcher() {
   const [active, setActive] = useState(0);
-  return <div className={`object-panel television channel-view-${active}`}><p className="fragment-label">A FICTIONAL BROADCAST / 02</p><h3>Change the channel.</h3><div className="object-buttons">{channels.map((channel, i) => <button key={channel.label} aria-pressed={active === i} onClick={() => setActive(i)}>{channel.label}</button>)}</div><div className="channel-message" aria-live="polite"><span>0{active + 1} / {channels[active].label}</span><p>{channels[active].text}</p></div><a href="https://www.newyorker.com/culture/culture-desk/frank-ocean-channel-orange" target="_blank" rel="noopener noreferrer">Read critical context ↗</a></div>;
+  return <div className={`object-panel television channel-view-${active}`}><p className="fragment-label">A FICTIONAL BROADCAST / 02</p><h3>Change the channel.</h3><div className="object-buttons">{channels.map((channel, i) => <button key={channel.label} aria-pressed={active === i} onClick={() => setActive(i)}>{channel.label}</button>)}</div><div className="channel-message" aria-live="polite"><span>0{active + 1} / {channels[active].label}</span><p>{channels[active].text}</p></div><a href={context} target="_blank" rel="noopener noreferrer">Read critical context ↗</a></div>;
 }
 const memories = [
   { id: "youth", title: "Youth", text: "What we remember of growing up is rarely the whole picture." },
@@ -35,3 +35,4 @@ const threads = [
 export function Threads() {
   return <section className="threads-section" id="threads" aria-labelledby="threads-title"><p className="eyebrow">Paths through the archive</p><h2 id="threads-title">Follow a<br /><em>thread.</em></h2><p>These are invitations, not instructions. Start anywhere and leave whenever you like.</p><div className="threads-grid">{threads.map(thread => <details key={thread.title}><summary>{thread.title} <span aria-hidden="true">↗</span></summary><p>{thread.text}</p><ol>{thread.stops.map((stop, i) => <li key={stop.href}><span>0{i + 1}</span> <a href={stop.href}>{stop.label} ↗</a></li>)}</ol><a href={context} target="_blank" rel="noopener noreferrer">Read the editorial context ↗</a></details>)}</div></section>;
 }
+
