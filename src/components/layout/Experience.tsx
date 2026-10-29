@@ -5,6 +5,7 @@ import SceneFallback from "@/components/canvas/SceneFallback";
 import Navigation from "@/components/dom/Navigation";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import { useStore } from "@/store/useStore";
+import { MemoryProvider } from "@/components/dom/MemoryBox";
 
 export default function Experience({ children }: { children: ReactNode }) {
   const setActiveProjectIndex = useStore(s => s.setActiveProjectIndex);
@@ -23,6 +24,6 @@ export default function Experience({ children }: { children: ReactNode }) {
     sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, [setActiveProjectIndex]);
-  return <><a className="skip-link" href="#nostalgia">Skip to chapters</a>{!reduced && <SceneFallback><SceneWrapper /></SceneFallback>}<Navigation /><SmoothScroll disabled={reduced}><main>{children}</main></SmoothScroll></>;
+  return <MemoryProvider><a className="skip-link" href="#chapter-index">Skip to chapters</a>{!reduced && <SceneFallback><SceneWrapper /></SceneFallback>}<Navigation /><SmoothScroll disabled={reduced}><main>{children}</main></SmoothScroll></MemoryProvider>;
 }
 
