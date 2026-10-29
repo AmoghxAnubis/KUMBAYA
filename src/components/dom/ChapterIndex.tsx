@@ -9,6 +9,7 @@ export default function ChapterIndex() {
   return <section id="chapter-index" className="index-section" aria-labelledby="index-title">
     <div className="index-intro"><div><p className="eyebrow">A place to begin</p><h2 id="index-title">Choose a<br /><em>chapter.</em></h2></div><p>Four worlds, four different shades of the same voice. Start anywhere, or follow the story from the beginning.</p></div>
     <div className="index-grid">{chapters.map(chapter => <a key={chapter.number} href={chapter.href} className={`index-card index-${chapter.color}`}><div className="index-card-top"><span>{chapter.number} / 04</span><span>↗</span></div><div className="index-card-disc" aria-hidden="true"><i /></div><div className="index-card-bottom"><span>{chapter.year} · {chapter.note}</span><h3>{chapter.title}</h3></div></a>)}</div>
+    <div className="feeling-index"><p className="fragment-label">Or start with a feeling</p><a href="#nostalgia">The long way home ↗</a><a href="#channel-orange">A different kind of love ↗</a><a href="#endless">Things left unfinished ↗</a><a href="#blonde">Looking back ↗</a></div>
   </section>;
 }
 
