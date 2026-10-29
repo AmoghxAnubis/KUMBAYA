@@ -2,6 +2,8 @@
 import Performances from "@/components/dom/Performances";
 import ListeningArchive from "@/components/dom/ListeningArchive";
 import ChapterIndex from "@/components/dom/ChapterIndex";
+import { Fragment, MemoryBox } from "@/components/dom/MemoryBox";
+import Workshop from "@/components/dom/Workshop";
 
 const chapters = [
   { id: "nostalgia", number: "01", year: "2011 · MIXTAPE", title: "Nostalgia,", accent: "Ultra", description: "An orange cassette, a BMW, and a collection of stories about longing, escape, and growing up.", tracks: ["Novacane", "Swim Good", "Nature Feels", "Songs for Women"], className: "nostalgia" },
@@ -29,7 +31,7 @@ export default function Home() {
         <div className="hero-content">
           <p className="hero-overline"><span /> A journey through the world of Frank Ocean</p>
           <h1 id="hero-title">KUMBAYA<span>.</span></h1>
-          <div className="hero-description"><p>Music for the moments<br /><em>that stay with us.</em></p><a href="#chapter-index" className="hero-enter"><span className="hero-enter-icon" aria-hidden="true">↘</span><span>Enter the story<small>Four chapters & beyond</small></span></a></div>
+          <div className="hero-description"><p>An archive of things<br /><em>that stayed.</em></p><a href="#chapter-index" className="hero-enter"><span className="hero-enter-icon" aria-hidden="true">↘</span><span>Enter the archive<small>Four chapters. Many ways in.</small></span></a></div>
         </div>
         <div className="hero-caption"><span>2011 — 2016 & BEYOND</span><span>SCROLL TO EXPLORE ↓</span></div>
       </div>
@@ -40,6 +42,8 @@ export default function Home() {
         <div className="chapter-meta"><span>{chapter.year}</span><span>CHAPTER {chapter.number} / 04</span></div>
         <div className="chapter-main"><div className="chapter-heading"><p className="eyebrow">The story so far</p><h2 id={`${chapter.id}-title`}>{chapter.title}{chapter.accent && <><br /><em>{chapter.accent}</em></>}</h2></div>
           <div className="chapter-copy"><p>{chapter.description}</p><div className="track-label">Selected tracks</div><ul>{chapter.tracks.map(track => <li key={track}><a href={`https://open.spotify.com/search/${encodeURIComponent(`Frank Ocean ${track}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Search Spotify for ${track} by Frank Ocean`}>{track} <span aria-hidden="true">↗</span></a></li>)}</ul></div></div>
+        {chapter.id === "endless" && <Workshop />}
+        {chapter.id === "nostalgia" && <Fragment id="passenger" />}{chapter.id === "endless" && <Fragment id="staircase" />}{chapter.id === "blonde" && <Fragment id="green" />}
         <div className="chapter-next"><span>{chapter.number} / 04</span><a href={index < chapters.length - 1 ? `#${chapters[index + 1].id}` : "#archive"} className="text-link">{index < chapters.length - 1 ? "Next chapter" : "Explore the archive"} <span aria-hidden="true">↓</span></a></div>
       </div>
       <ChapterArt type={chapter.className} number={chapter.number} />
@@ -48,6 +52,7 @@ export default function Home() {
     <HomerRadio />
     <Performances />
     <ListeningArchive />
+    <MemoryBox />
     <footer id="credits" className="footer chapter" data-scene="0"><p className="eyebrow">Made for the music</p><h2>Until next time<span>.</span></h2><div className="footer-bottom"><p>An independent fan tribute to Frank Ocean.</p><a href="#home" className="text-link">Experience again ↑</a></div></footer>
   </>;
 }
