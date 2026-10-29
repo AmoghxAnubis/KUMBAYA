@@ -50,7 +50,8 @@ function useBox() { const box = useContext(Context); if (!box) throw new Error("
 export function BoxLink() { const { ids, message } = useBox(); return <><a href="#memory-box">Your box {ids.length}/5</a><span className="visually-hidden" role="status">{message}</span></>; }
 export function Fragment({ id }: { id: string }) {
   const box = useBox(); const item = fragments.find(f => f.id === id)!; const kept = box.ids.includes(id);
-  return <div className="fragment-card"><span className="fragment-label">A FRAGMENT TO KEEP</span><h3>{item.title}</h3><p>{item.copy}</p><button type="button" onClick={() => box.toggle(id)} aria-pressed={kept}>{kept ? "Kept · Remove" : "Keep this"} <span aria-hidden="true">{kept ? "−" : "+"}</span></button></div>;
+  const [attempted, setAttempted] = useState(false);
+  return <div className="fragment-card"><span className="fragment-label">A FRAGMENT TO KEEP</span><h3>{item.title}</h3><p>{item.copy}</p><button type="button" onClick={() => { setAttempted(true); box.toggle(id); }} aria-pressed={kept}>{kept ? "Kept · Remove" : "Keep this"} <span aria-hidden="true">{kept ? "−" : "+"}</span></button>{attempted && !kept && box.ids.length >= 5 && <p className="fragment-feedback">Your box is full. <a href="#memory-box">Remove a fragment</a> to make room.</p>}</div>;
 }
 export function MemoryBox() {
   const box = useBox();
