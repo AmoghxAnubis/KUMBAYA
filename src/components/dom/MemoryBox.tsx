@@ -18,8 +18,11 @@ export function MemoryProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(key) || "[]");
+      // Hydrate from browser storage only after the server and client have rendered the same initial state.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (Array.isArray(saved)) setIds([...new Set(saved.filter((id): id is string => typeof id === "string" && fragments.some(f => f.id === id)))].slice(0, 5));
     } catch { /* Keep the box usable in memory when storage is unavailable. */ }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setReady(true);
   }, []);
   useEffect(() => { if (ready) { try { localStorage.setItem(key, JSON.stringify(ids)); } catch { /* memory-only fallback */ } } }, [ids, ready]);
