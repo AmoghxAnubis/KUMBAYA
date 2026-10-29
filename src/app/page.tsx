@@ -5,6 +5,7 @@ import ChapterIndex from "@/components/dom/ChapterIndex";
 import { Fragment, MemoryBox } from "@/components/dom/MemoryBox";
 import Workshop from "@/components/dom/Workshop";
 import { PassengerSeat, ChannelSwitcher, MemoryCards, Threads } from "@/components/dom/ChapterInteractions";
+import SignalDial from "@/components/dom/SignalDial";
 
 const chapters = [
   { id: "nostalgia", number: "01", year: "2011 · MIXTAPE", title: "Nostalgia,", accent: "Ultra", description: "An orange cassette, a BMW, and a collection of stories about longing, escape, and growing up.", tracks: ["Novacane", "Swim Good", "Nature Feels", "Songs for Women"], className: "nostalgia" },
@@ -39,6 +40,7 @@ export default function Home() {
     </section>
     <section className="manifesto" aria-labelledby="manifesto-title"><div className="manifesto-meta"><span>THE IDEA / 001</span><span>A NOTE FROM KUMBAYA</span></div><div className="manifesto-layout"><p className="manifesto-side">A PLACE FOR<br />THE THINGS THAT STAY.</p><div><h2 id="manifesto-title">Music is never<br />just <em>music.</em></h2><p>A song becomes a place. A voice brings back a summer. A fragment finds its way into your own story. This is an independent archive for the worlds around Frank Ocean&apos;s music — and the things we carry away from them.</p><a href="#chapter-index" className="manifesto-link">FIND YOUR WAY IN <span>↗</span></a></div></div></section>
     <ChapterIndex />
+    <SignalDial />
     <section className="seat-spread" aria-labelledby="seat-title"><div className="seat-spread-image" role="img" aria-label="A cassette and photographs on the passenger seat of a car" /><div className="seat-spread-copy"><p className="eyebrow">FIELD NOTE / THE PASSENGER SEAT</p><h2 id="seat-title">Take the<br /><em>long way.</em></h2><p>Somewhere between leaving and arriving, a song becomes a memory. Take a seat, choose a chapter, and see where it takes you.</p><a href="#nostalgia" className="manifesto-link">START THE FIRST CHAPTER <span>↗</span></a></div></section>
     {chapters.map((chapter, index) => <section key={chapter.id} id={chapter.id} data-scene={index + 1} className={`chapter album ${chapter.className}`} aria-labelledby={`${chapter.id}-title`}>
       <div className="chapter-content">
