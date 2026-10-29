@@ -26,17 +26,18 @@ function ChapterArt({ type, number }: { type: string; number: string }) {
 export default function Home() {
   return <>
     <section id="home" className="hero chapter" data-scene="0" aria-labelledby="hero-title">
-      <div className="hero-image" aria-hidden="true" />
       <div className="hero-frame">
-        <div className="hero-kicker"><span>AN INDEPENDENT TRIBUTE</span><span>FOR THE LISTENERS / 01—04</span></div>
+        <div className="hero-kicker"><span>INDEPENDENT MUSIC ARCHIVE</span><span>EST. IN THE FEELING / 01—04</span></div>
         <div className="hero-content">
-          <p className="hero-overline"><span /> A journey through the world of Frank Ocean</p>
-          <h1 id="hero-title">KUMBAYA<span>.</span></h1>
-          <div className="hero-description"><p>An archive of things<br /><em>that stayed.</em></p><a href="#chapter-index" className="hero-enter"><span className="hero-enter-icon" aria-hidden="true">↘</span><span>Enter the archive<small>Four chapters. Many ways in.</small></span></a></div>
+          <p className="hero-overline"><span /> AN INDEPENDENT TRIBUTE TO FRANK OCEAN</p>
+          <h1 id="hero-title">Some things<br /><em>stay with you.</em></h1>
+          <div className="hero-description"><p>Four chapters. Countless memories.<br />A world you can make your own.</p><a href="#chapter-index" className="hero-enter"><span>Enter the archive<small>SCROLL TO EXPLORE</small></span><span className="hero-enter-icon" aria-hidden="true">↘</span></a></div>
         </div>
-        <div className="hero-caption"><span>2011 — 2016 & BEYOND</span><span>SCROLL TO EXPLORE ↓</span></div>
+        <div className="hero-image" role="img" aria-label="A quiet coastal road at dusk"><div className="hero-image-label"><span>FIELD NOTES / 001</span><span>THE LONG WAY HOME ↗</span></div><div className="hero-image-wordmark" aria-hidden="true">KUMBAYA<span>✳</span></div></div>
+        <div className="hero-caption"><span>A WORLD YOU REMEMBER</span><span>2011 — 2016 & BEYOND</span></div>
       </div>
     </section>
+    <section className="manifesto" aria-labelledby="manifesto-title"><div className="manifesto-meta"><span>THE IDEA / 001</span><span>A NOTE FROM KUMBAYA</span></div><div className="manifesto-layout"><p className="manifesto-side">A PLACE FOR<br />THE THINGS THAT STAY.</p><div><h2 id="manifesto-title">Music is never<br />just <em>music.</em></h2><p>A song becomes a place. A voice brings back a summer. A fragment finds its way into your own story. This is an independent archive for the worlds around Frank Ocean&apos;s music — and the things we carry away from them.</p><a href="#chapter-index" className="manifesto-link">FIND YOUR WAY IN <span>↗</span></a></div></div></section>
     <ChapterIndex />
     {chapters.map((chapter, index) => <section key={chapter.id} id={chapter.id} data-scene={index + 1} className={`chapter album ${chapter.className}`} aria-labelledby={`${chapter.id}-title`}>
       <div className="chapter-content">
