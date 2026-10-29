@@ -169,3 +169,22 @@ h1 .hero-dot { color: #ff9564; }
 .hero-enter small { display: block; margin-top: .4rem; color: #e4eddfb0; font-size: .57rem; letter-spacing: .1em; }
 .hero-caption { border-top: 1px solid #ffffff60; padding-top: 1rem; }
 @media (max-width: 700px) { .hero-frame { padding: 7rem 5vw 1.5rem; } .hero-kicker, .hero-caption { font-size: .52rem; letter-spacing: .08em; } .hero-kicker span:last-child { display: none; } .hero-content { padding: 3rem 0; } .hero h1 { font-size: 15vw; margin: 1.3rem 0 2rem; } .hero-overline { max-width: 16rem; line-height: 1.5; font-size: .57rem; } .hero-description { flex-direction: column; align-items: start; gap: 2rem; } .hero-description > p { font-size: clamp(1.7rem, 7vw, 2.5rem); } .hero-image { background-position: 62% center; } }
+
+/* The archive's private, text-first memory system. */
+button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.fragment-card, .workshop { position: relative; max-width: 34rem; margin: 0 0 3rem; padding: 1.5rem; border: 1px solid #ffffff80; background: #171b18d9; color: #f5f2e9; }
+.fragment-label { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+.fragment-card h3, .workshop h3, .memory-list h3 { font: 700 1.7rem/1 'Space Grotesk', sans-serif; letter-spacing: -.05em; margin: 1rem 0; }
+.fragment-card p, .workshop p, .memory-list p { line-height: 1.5; }
+.fragment-card button, .workshop-tabs button, .memory-actions button, .box-controls button { cursor: pointer; color: inherit; font: 700 .65rem 'DM Sans', sans-serif; letter-spacing: .1em; text-transform: uppercase; border: 1px solid currentColor; background: transparent; padding: .75rem 1rem; }
+.fragment-card button { display: flex; justify-content: space-between; gap: 3rem; margin-top: 1.5rem; }
+.fragment-card button:hover, .workshop-tabs button[aria-pressed="true"] { background: #f5f2e9; color: #171b18; }
+.workshop-tabs { display: flex; flex-wrap: wrap; gap: .5rem; }
+.workshop > a, .workshop-thread, .memory-list a { font-size: .75rem; line-height: 1.6; }
+.workshop-thread { border-top: 1px solid #ffffff70; padding-top: 1rem; margin-top: 1.5rem; letter-spacing: .04em; }
+.memory-box { position: relative; z-index: 1; padding: 8rem 5vw; background: #dfdfce; color: #1b211b; }
+.memory-intro { display: flex; justify-content: space-between; align-items: end; gap: 3rem; }
+.memory-intro .eyebrow { color: #52674e; }.memory-intro h2 { margin: 1rem 0; font-size: clamp(4rem, 9vw, 9rem); line-height: .85; }.memory-intro h2 em { font-weight: 400; }.memory-intro > p { max-width: 22rem; line-height: 1.6; }
+.box-status { border-bottom: 1px solid #1b211b80; margin-top: 4rem; padding-bottom: 1rem; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+.memory-list { list-style: none; padding: 0; margin: 0; }.memory-list li { display: flex; justify-content: space-between; gap: 2rem; border-bottom: 1px solid #1b211b50; padding: 2rem 0; }.memory-actions { display: flex; align-items: start; flex-wrap: wrap; gap: .4rem; }.memory-actions button:disabled { opacity: .35; cursor: default; }.box-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }.box-controls span, .box-empty { font-size: .85rem; }
+@media (max-width: 700px) { .memory-box { padding: 5rem 5vw; }.memory-intro, .memory-list li { flex-direction: column; align-items: start; gap: 1rem; }.navigation { flex-wrap: wrap; }.navigation a:first-child { margin-right: auto; }.fragment-card, .workshop { padding: 1.2rem; } }
