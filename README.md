@@ -13,4 +13,4 @@ Install dependencies with `npm install`, then run `npm run dev` and open http://
 - `src/components/canvas/SceneWrapper.tsx`: decorative 3D scene.
 - `src/app/globals.css`: responsive visual design.
 
-The site is a fan tribute and is not affiliated with Frank Ocean. It currently includes no music or album artwork. Secure appropriate rights before adding third-party audio, images, or other protected material.
+The site is a fan tribute and is not affiliated with Frank Ocean. It hosts no audio or album artwork; the listening archive includes a third-party Spotify embed and external links. The Memory Box stores selected fragment IDs on the device when local storage is available, with a memory-only fallback. Secure appropriate rights before adding third-party audio, images, or other protected material.
