@@ -6,6 +6,15 @@ const fragments = [
   { id: "passenger", title: "The passenger seat", copy: "Some conversations need a long way home.", anchor: "#nostalgia" },
   { id: "staircase", title: "The staircase", copy: "A work can be unfinished and still mean something.", anchor: "#endless", source: "https://www.newyorker.com/magazine/2016/09/05/frank-oceans-blonde-endless-and-boys-dont-cry-reviewed", sourceLabel: "The New Yorker on Endless" },
   { id: "green", title: "A flash of green", copy: "Memory rarely arrives in order.", anchor: "#blonde", source: "https://www.malaymail.com/news/showbiz/2016/11/22/frank-ocean-finally-free-mystery-intact/1255429", sourceLabel: "Frank Ocean on memory and writing" },
+  { id: "road", title: "The long way", copy: "A detour can give a moment room to breathe.", anchor: "#nostalgia" },
+  { id: "room", title: "Every room", copy: "Every room has a story, even after its people leave.", anchor: "#channel-orange" },
+  { id: "summer", title: "A different summer", copy: "A bright afternoon can hold more than one story.", anchor: "#channel-orange" },
+  { id: "workshop", title: "Still becoming", copy: "There is room to begin again in the middle of things.", anchor: "#endless" },
+  { id: "distance", title: "A little distance", copy: "Some things come into focus only after we leave them.", anchor: "#blonde" },
+  { id: "mixtape", title: "Side A", copy: "A collection can be a map of where you have been.", anchor: "#nostalgia" },
+  { id: "window", title: "Through the window", copy: "Look long enough and the background becomes the story.", anchor: "#channel-orange" },
+  { id: "pause", title: "The pause", copy: "Rest is part of the work, too.", anchor: "#endless" },
+  { id: "time", title: "Out of order", copy: "Not everything returns in the order it happened.", anchor: "#blonde" },
 ];
 type Box = { ids: string[]; toggle: (id: string) => void; move: (id: string, direction: number) => void; clear: () => void; message: string };
 const Context = createContext<Box | null>(null);
@@ -41,7 +50,7 @@ function useBox() { const box = useContext(Context); if (!box) throw new Error("
 export function BoxLink() { const { ids } = useBox(); return <a href="#memory-box">Your box {ids.length}/5</a>; }
 export function Fragment({ id }: { id: string }) {
   const box = useBox(); const item = fragments.find(f => f.id === id)!; const kept = box.ids.includes(id);
-  return <div className="fragment-card"><span className="fragment-label">A FRAGMENT TO KEEP</span><h3>{item.title}</h3><p>{item.copy}</p><button type="button" onClick={() => box.toggle(id)} aria-pressed={kept}>{kept ? "Kept · Remove" : "Keep this"} <span aria-hidden="true">{kept ? "−" : "+"}</span></button></div>;
+  return <div className="fragment-card"><span className="fragment-label">A FRAGMENT TO KEEP</span><h3>{item.title}</h3><p>{item.copy}</p><button type="button" onClick={() => box.toggle(id)} aria-pressed={kept}>{kept ? "Kept · Remove" : "Keep this"} <span aria-hidden="true">{kept ? "−" : "+"}</span></button><span className="visually-hidden" role="status">{box.message}</span></div>;
 }
 export function MemoryBox() {
   const box = useBox();
