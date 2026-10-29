@@ -214,3 +214,71 @@ body { background: var(--paper); }
 .index-orange .index-card-art { background-image: url('/passenger-seat.png'); }
 .seat-spread { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 43rem; background: #d5c9af; color: #262820; }.seat-spread-image { min-height: 35rem; background: url('/passenger-seat.png') center / cover; }.seat-spread-copy { display: flex; flex-direction: column; justify-content: center; align-items: start; padding: clamp(2rem, 7vw, 8rem); }.seat-spread-copy .eyebrow { color: #58624c; }.seat-spread h2 { margin: 1.5rem 0 2rem; font-size: clamp(4rem, 7vw, 8rem); line-height: .87; }.seat-spread h2 em { font-family: Georgia, serif; font-weight: 400; }.seat-spread-copy > p:not(.eyebrow) { max-width: 24rem; line-height: 1.6; font-size: 1.1rem; }
 @media (max-width: 700px) { .seat-spread { grid-template-columns: 1fr; }.seat-spread-image { min-height: 75vw; }.seat-spread-copy { padding: 4rem 5vw 5rem; }.seat-spread h2 { font-size: 15vw; } }
+
+/* Readability, navigation and color themes */
+html { color-scheme: light; scroll-padding-top: 6rem; }
+section[id], footer[id] { scroll-margin-top: 6rem; }
+.navigation { min-height: 4.5rem; }
+.navigation a { font-size: .72rem; }
+.navigation a:last-of-type { border-color: currentColor; }
+.theme-toggle { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; padding: .5rem .7rem; border: 1px solid currentColor; border-radius: 2rem; background: transparent; color: inherit; cursor: pointer; font: 700 .7rem 'DM Sans', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.theme-toggle span:first-child { font-size: 1.1rem; line-height: 1; }
+.theme-toggle:hover { background: var(--deep-ink); color: var(--paper); }
+:where(a, button, summary):focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+.chapter-nav { color: white; }
+.hero-image-label { text-shadow: 0 1px 5px #000, 0 1px 12px #000; }
+.hero-image-wordmark { color: #fff; text-shadow: 0 1px 12px #0009; }
+.index-card-art span { color: #fff; text-shadow: 0 1px 12px #0009; }
+.nostalgia { --bg: #80391f; --fade: #80391f; }
+.channel { --bg: #835015; --fade: #835015; }
+.endless { --bg: #242824; --fade: #242824; }
+.blonde { --bg: #304e3a; --fade: #304e3a; }
+.chapter-art { opacity: .22; }
+.chapter-heading .eyebrow, .track-label { color: #fff; opacity: .9; }
+.chapter-copy li { border-color: #fff; }
+.chapter-copy li a span { opacity: 1; }
+.fragment-label { opacity: 1; }
+.fragment-card, .workshop, .object-panel { background: #171b18; }
+.listening-interlude { background-image: linear-gradient(90deg, #101610f2 0%, #101610b8 55%, #10161060), url('/listening-after-dark.png'); }
+.archive-track-number, .archive-track-mark { color: #465d46; }
+.radio-copy h2 span { color: #9c401d; }
+.episode-card:focus-visible { outline-offset: -4px; }
+
+html[data-theme="dark"] { color-scheme: dark; --paper: #171b18; --deep-ink: #f2f0e7; }
+html[data-theme="dark"] body { background: #171b18; color: #f2f0e7; }
+html[data-theme="dark"] .navigation { border-color: #ffffff45; }
+html[data-theme="dark"] .hero { color: #f2f0e7; }
+html[data-theme="dark"] .hero-kicker, html[data-theme="dark"] .hero-caption, html[data-theme="dark"] .hero-overline, html[data-theme="dark"] .hero-enter small { color: #c4ccbd; border-color: #ffffff55; }
+html[data-theme="dark"] .hero-overline span { background: #b8d598; }
+html[data-theme="dark"] .hero-enter-icon { border-color: #f2f0e7; }
+html[data-theme="dark"] .hero-enter:hover .hero-enter-icon { background: #f2f0e7; color: #171b18; }
+html[data-theme="dark"] .manifesto { background: #303e2d; color: #f2f0e7; }
+html[data-theme="dark"] .manifesto-meta { border-color: #ffffff80; }
+html[data-theme="dark"] .index-section { color: #f2f0e7; }
+html[data-theme="dark"] .index-intro .eyebrow, html[data-theme="dark"] .index-intro > p, html[data-theme="dark"] .index-card-bottom > span { color: #c5cdbf; }
+html[data-theme="dark"] .index-card { color: #f2f0e7; }
+html[data-theme="dark"] .index-card-top, html[data-theme="dark"] .feeling-index { border-color: #ffffff80; }
+html[data-theme="dark"] .seat-spread { background: #363a2f; color: #f2f0e7; }
+html[data-theme="dark"] .seat-spread-copy .eyebrow { color: #c5d5b7; }
+html[data-theme="dark"] .threads-section, html[data-theme="dark"] .archive, html[data-theme="dark"] .memory-box { background: #202722; color: #f2f0e7; }
+html[data-theme="dark"] .threads-section .eyebrow, html[data-theme="dark"] .archive-intro .eyebrow, html[data-theme="dark"] .memory-intro .eyebrow { color: #b9d2ac; }
+html[data-theme="dark"] .threads-grid details, html[data-theme="dark"] .threads-grid li, html[data-theme="dark"] .archive-header, html[data-theme="dark"] .archive-label, html[data-theme="dark"] .archive-tracks li, html[data-theme="dark"] .box-status, html[data-theme="dark"] .memory-list li { border-color: #ffffff80; }
+html[data-theme="dark"] .archive-tracks > p, html[data-theme="dark"] .archive-player > p, html[data-theme="dark"] .archive-track-number, html[data-theme="dark"] .archive-track-mark { color: #c4d2bf; }
+html[data-theme="dark"] .archive-tracks li a:hover { color: #c4e1ab; }
+html[data-theme="dark"] .radio-section { background: #34452f; color: #f2f0e7; }
+html[data-theme="dark"] .radio-copy .eyebrow { color: #c4d9b4; }
+html[data-theme="dark"] .radio-copy h2 span { color: #ffba91; }
+html[data-theme="dark"] .radio-button, html[data-theme="dark"] .radio-center { background: #edf0dd; color: #1d2c1c; }
+html[data-theme="dark"] .radio-button:hover { background: #c6d9ad; }
+html[data-theme="dark"] .radio-ring, html[data-theme="dark"] .episode-card { border-color: #f2f0e7a0; }
+html[data-theme="dark"] .episode-card:hover { background: #edf0dd; color: #1d2c1c; }
+@media (max-width: 700px) {
+  html { scroll-padding-top: 8rem; }
+  section[id], footer[id] { scroll-margin-top: 8rem; }
+  .navigation { gap: .45rem .75rem; padding: .65rem 4vw; }
+  .navigation a { font-size: .65rem; }
+  .navigation a:first-child { font-size: 1rem; }
+  .theme-toggle { min-height: 2.5rem; font-size: .65rem; }
+  .chapter-art { opacity: .16; }
+  .hero-frame { padding-top: 8rem; }
+}
